@@ -384,6 +384,13 @@ $ docker network create -d overlay overnet
 wlqnvajmmzskn84bqbdi1ytuy
 ```
 
+If you want to attach a container later to this network, you should use the attachable flag.
+
+```
+$ docker network create -d overlay --attachable overnet
+wlqnvajmmzskn84bqbdi1ytuy
+```
+
 Use the `docker network ls` command to verify the network was created successfully:
 
 ```
