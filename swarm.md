@@ -379,6 +379,8 @@ Now that you have a Swarm initialized it's time to create an **overlay** network
 
 Create a new overlay network called **overnet** by running `docker network create -d overlay overnet` on **manager1**.
 
+> **NOTE:** We can encrypt overlay networks using _--opt encrypted_, this enables IPSEC encryption at the level of the vxlan, but take care with this option because it adds some performance penalty.
+
 ```
 $ docker network create -d overlay overnet
 wlqnvajmmzskn84bqbdi1ytuy
