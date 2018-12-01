@@ -100,6 +100,9 @@ kubectl apply -f ./manifests/
 
 This isn't good. The frontend is communicating directly with the backend, as well as with the facade, and the facade and backend are communicating with the frontend. We can fix that with ingress policies.
 
+> **NOTE:** We haven't deployed encrypted networks in this example application, but Docker Enterprise 2.1+ allows this feature. Kubernetes network encryption is enabled by two components in UCP: the SecureOverlay Agent and SecureOverlay Master. The agent is deployed as a per-node service that manages the encryption state of the data plane and controls the IPSec encryption on Calico’s IPIP tunnel traffic between different nodes. The master is deployed on a UCP manager node and acts as the key management process that configures and periodically rotates the encryption keys.
+Details and full process can be found in [kubernetes-network-encryption](https://docs.docker.com/ee/ucp/kubernetes/kubernetes-network-encryption).
+
 ## Ingress Policies
 
 To start with you'll deploy a blanket ingress policy which restricts all traffic to all pods. When this is enforced, pods will only be able to communicate if they have an ingress policy which specifies explicit access, overriding the default policy.
